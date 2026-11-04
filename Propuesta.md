@@ -1,4 +1,5 @@
- <img src="https://github.com/user-attachments/assets/15600b18-f73b-4ba3-a959-47f0048a1ab6" alt="image2" width="50%">
+
+<img src="https://www.fi.uba.ar/images/logo-fiuba.png" alt="Logo FIUBA" width="50%">
 
 # Propuesta – Trabajo Final
 ## Prototipo MVP de Nodo Wearable para Espacios Confinados
@@ -22,8 +23,6 @@ La problemática involucra distintos actores:
 - **Equipos de rescate:** pueden beneficiarse de la disponibilidad de información sobre las condiciones del entorno y los eventos detectados ante una eventual situación de emergencia.
 - **Empresas contratistas:** deben procurar equipamiento adecuado para sus trabajadores, considerando también las restricciones económicas asociadas a su adquisición.
 
-La integración de funciones de monitoreo y alerta en un dispositivo personal constituye una oportunidad para desarrollar una solución portátil que facilite la identificación temprana de determinadas situaciones de riesgo.
-
 ### 1.2. Necesidad identificada
 
 A partir de la problemática planteada, se identifica la necesidad de contar con medios que permitan reconocer oportunamente determinadas condiciones potencialmente peligrosas durante la realización de tareas en espacios confinados, advertir al trabajador ante dichas situaciones y facilitar la disponibilidad de información para el personal responsable de la supervisión.
@@ -31,97 +30,152 @@ A partir de la problemática planteada, se identifica la necesidad de contar con
 Esta necesidad contempla dos aspectos complementarios:
 
 - **Protección del operario:** disponer de información sobre determinadas condiciones del entorno y del estado de movimiento del trabajador, junto con mecanismos que permitan advertirle localmente ante situaciones de alerta.
-- **Supervisión:** facilitar el acceso a información sobre los eventos detectados durante la tarea, de manera que pueda ser consultada por personal responsable cuando se encuentre disponible un medio de comunicación.
+- **Supervisión:** facilitar el acceso a información sobre las condiciones ambientales y los eventos detectados durante la tarea, de manera que pueda ser consultada por el personal responsable. Esto resulta especialmente relevante ante una eventual emergencia, ya que conocer las condiciones que originaron el incidente puede contribuir a planificar las acciones de asistencia o rescate antes de ingresar al espacio confinado, evitando exponer a otras personas a riesgos que aún no han sido identificados.
 
-### 1.3. Proyecto seleccionado
+### 1.3. Objetivo del proyecto y resultados esperados
 
-Se propone desarrollar un **nodo wearable para el monitoreo y la alerta temprana de trabajadores en espacios confinados**.
+El objetivo del proyecto es desarrollar un prototipo funcional que permita monitorear determinadas condiciones ambientales y situaciones asociadas al estado de movimiento de un trabajador durante la realización de tareas en espacios confinados. Se busca identificar condiciones potencialmente peligrosas, generar alertas que adviertan sobre dichas situaciones y facilitar la disponibilidad de información para el personal responsable de la supervisión.
 
-El dispositivo integrará un sensor de temperatura, una entrada analógica destinada a simular una señal asociada a la presencia de gases y un sensor inercial. Un microcontrolador será responsable de adquirir y procesar la información, gestionar los estados del sistema y activar distintos mecanismos de señalización.
+Como resultado, se espera obtener un prototipo integrado que permita:
+- Adquirir y procesar información correspondiente a variables ambientales y de movimiento.
+- Identificar condiciones que superen determinados umbrales o patrones de funcionamiento establecidos.
+- Generar alertas ante las situaciones detectadas.
+- Proporcionar información al usuario mediante mecanismos de visualización y señalización.
+- Comunicar eventos relevantes a un dispositivo externo.
+- Permitir la configuración de parámetros de funcionamiento y conservarlos entre reinicios.
 
-Además, contará con un enlace Bluetooth que permitirá transmitir información y alertas hacia una aplicación externa de recepción, siempre que el dispositivo receptor se encuentre dentro del alcance de comunicación.
+### 1.4. Proyectos similares
 
-El sistema contemplará las siguientes funcionalidades principales:
+A partir de la problemática y la necesidad identificadas, se plantean tres alternativas de solución para el monitoreo de trabajadores en espacios confinados. Estas alternativas contemplan diferentes configuraciones y alcances funcionales, que serán comparados para seleccionar la más adecuada para desarrollar en el marco del trabajo final.
 
-1. Monitorear la temperatura del entorno mediante un sensor analógico.
-2. Simular la adquisición de una señal asociada a la presencia de gases mediante una entrada analógica.
-3. Detectar períodos prolongados de inmovilidad mediante un sensor inercial.
-4. Activar alertas locales visuales y sonoras ante las condiciones definidas.
-5. Comunicar eventos relevantes a un dispositivo externo mediante Bluetooth.
-6. Permitir la configuración de parámetros de funcionamiento mediante un menú interactivo y la selección de perfiles predefinidos mediante Dip Switches.
-8. Almacenar la configuración para conservarla entre reinicios.
+1. **A1 – Sistema de monitoreo fijo:** equipos instalados en el espacio confinado para monitorear las condiciones ambientales y generar alertas.
 
-### 1.4. Objetivo general
+2. **A2 – Equipo portátil de monitoreo:** dispositivo transportable por el trabajador que permite monitorear variables ambientales y generar alertas durante la realización de las tareas.
 
-Desarrollar un prototipo funcional de un dispositivo wearable capaz de adquirir y procesar información ambiental e inercial, detectar condiciones de alerta previamente definidas y generar respuestas locales y notificaciones hacia un dispositivo externo mediante una arquitectura de firmware basada en eventos y máquinas de estado.
+3. **A3 – Nodo wearable:** dispositivo integrado al equipamiento del trabajador que combina el monitoreo de variables ambientales, la detección de períodos prolongados de inmovilidad y la generación de alertas locales, con posibilidad de transmitir información a un dispositivo externo.
 
-### 1.5. Alcance del MVP
+Para comparar las alternativas se definieron los siguientes criterios, considerando tanto las necesidades de protección y supervisión como la viabilidad de implementación. Los criterios seleccionados, junto con sus respectivas ponderaciones y descripciones, se presentan en la **Tabla 1.1**.
+
+| Criterio | Ponderación | Descripción |
+|---|---:|---|
+| Protección del operario | 25 % | Capacidad de la solución para advertir sobre condiciones potencialmente peligrosas y situaciones que puedan comprometer la seguridad del trabajador. |
+| Movilidad | 20 % | Facilidad para utilizar la solución durante el desplazamiento y la realización de tareas dentro del espacio confinado. |
+| Supervisión remota | 20 % | Posibilidad de transmitir información sobre las mediciones, las condiciones detectadas y los eventos registrados hacia un dispositivo externo, de manera que el personal responsable pueda disponer de información relevante ante una situación de emergencia. |
+| Viabilidad técnica | 15 % | Posibilidad de implementar la solución utilizando los recursos, conocimientos y componentes disponibles. |
+| Complejidad de implementación | 10 % | Esfuerzo de diseño, desarrollo e integración requerido para implementar la alternativa. |
+| Costo | 10 % | Costo estimado de los componentes y recursos necesarios para implementar la solución. |
+
+*Tabla 1.1: Criterios de evaluación y ponderaciones de las alternativas.*
+
+La ponderación de los criterios se estableció de acuerdo con su importancia relativa para el proyecto.
+
+La **protección del operario** recibe el mayor peso (25 %), ya que constituye el propósito principal de la solución y se busca priorizar aquellas alternativas que permitan advertir oportunamente sobre situaciones potencialmente peligrosas.
+
+La **movilidad** se pondera con un 20 %, dado que se considera importante que la solución pueda acompañar al trabajador durante la realización de sus tareas, sin depender exclusivamente de instalaciones fijas dentro del espacio confinado.
+
+La **supervisión remota** recibe una ponderación del 20 %, debido a la importancia de disponer de información sobre las condiciones ambientales y los eventos detectados ante una eventual emergencia. Esta información puede contribuir a que el personal responsable evalúe la situación y planifique las acciones de asistencia o rescate antes de ingresar al espacio confinado, reduciendo la exposición a riesgos adicionales.
+
+La **viabilidad técnica** recibe una ponderación del 15 %, debido a que la alternativa seleccionada debe poder implementarse utilizando los conocimientos, recursos y componentes disponibles en el marco del trabajo final.
+
+Por último, la **complejidad de implementación** y el **costo** reciben un 10 % cada uno. Se consideran aspectos relevantes para la selección, aunque se prioriza obtener una solución funcional y técnicamente viable por sobre minimizar al máximo el esfuerzo de desarrollo o el presupuesto requerido.
+
+
+Se utilizó una escala de valoración de 1 a 5, donde 1 representa una condición muy desfavorable y 5 una condición muy favorable. Para los criterios de complejidad y costo, una mayor puntuación representa una menor complejidad o un menor costo de implementación.
+
+La puntuación final de cada alternativa se obtiene mediante la suma de los productos entre la valoración asignada a cada criterio y su ponderación correspondiente. Los resultados de esta evaluación se presentan en la **Tabla 1.2**.
+
+| Criterio | Ponderación | A1 | A2 | A3 |
+|---|---:|---:|---:|---:|
+| Protección del operario | 25 % | 3 | 4 | 5 |
+| Movilidad | 20 % | 1 | 4 | 5 |
+| Supervisión remota | 20 % | 4 | 3 | 4 |
+| Viabilidad técnica | 15 % | 3 | 4 | 4 |
+| Complejidad de implementación | 10 % | 3 | 3 | 2 |
+| Costo | 10 % | 3 | 4 | 2 |
+| **Puntuación final** | **100 %** | **2,80** | **3,70** | **4,05** |
+
+*Tabla 1.2: Comparación ponderada de las alternativas de proyecto.*
+
+### 1.5. Selección del proyecto
+
+A partir de la comparación realizada, se seleccionó la alternativa **A3 – Nodo wearable**, que obtuvo la mayor puntuación ponderada (4,05). Esta opción presenta ventajas en términos de movilidad y protección del operario, al integrar el monitoreo de variables ambientales con la detección de períodos prolongados de inmovilidad y la generación de alertas locales.
+
+Si bien implica una mayor complejidad de implementación y un costo superior al de algunas de las alternativas consideradas, se considera técnicamente viable dentro del alcance académico del trabajo final.
+
+De esta manera, el proyecto a desarrollar consiste en un prototipo de dispositivo wearable destinado al monitoreo de determinadas condiciones ambientales y situaciones asociadas al estado de movimiento de un trabajador en espacios confinados, con capacidad de generar alertas locales y transmitir información relevante a un dispositivo externo.
+
+### 1.6. Alcance del MVP
 
 El prototipo comprenderá la integración del hardware, el desarrollo del firmware y la verificación funcional de las principales capacidades del sistema.
 
 Se incluyen:
 
-- Adquisición de temperatura mediante LM35.
-- Simulación de una señal analógica de gases mediante un trimpot.
-- Adquisición de aceleración y velocidad angular mediante MPU-6050.
+- Adquisición de temperatura ambiental mediante un sensor LM35.
+- Detección de gases combustibles y humo mediante un sensor MQ-2.
+- Adquisición de aceleración y velocidad angular mediante un sensor MPU-6050.
 - Detección de inmovilidad prolongada, con un tiempo inicial de 30 segundos, y generación de una prealarma cancelable de 15 segundos.
-- Selección de perfiles de funcionamiento predefinidos mediante Dip Switches.
-- Señalización mediante LEDs y buzzer.
+- Señalización visual mediante LEDs indicadores de estado y generación de alertas sonoras mediante un buzzer.
 - Visualización de información mediante LCD.
-- Comunicación Bluetooth mediante HM-10.
-- Configuración de parámetros mediante botones y joystick.
-- Almacenamiento persistente de parámetros de configuración.
-- Implementación de una arquitectura de firmware no bloqueante y orientada a eventos.
+- Comunicación Bluetooth de bajo consumo (BLE) mediante un módulo HM-10, para transmitir información y eventos detectados a un dispositivo externo.
+- Configuración de parámetros de funcionamiento mediante pulsadores y joystick.
+- Selección de perfiles de usuario mediante el menú de configuración, con cuatro perfiles disponibles y parámetros de funcionamiento independientes para cada uno.
+- Almacenamiento persistente de los parámetros de configuración de cada perfil y del perfil activo mediante el uso de la memoria Flash interna del microcontrolador.
+
+La utilización del sensor MQ-2 tendrá fines exclusivamente experimentales y de demostración. Este sensor permite detectar determinados gases combustibles y humo, pero no es suficiente para evaluar integralmente las condiciones atmosféricas de un espacio confinado. Una evaluación de este tipo requeriría incorporar sensores específicos para los distintos gases de interés, como oxígeno y monóxido de carbono, entre otros. Existen distintas tecnologías de detección, como los sensores electroquímicos, infrarrojos no dispersivos (NDIR) y catalíticos, cuya incorporación no se contempla en este MVP debido al mayor costo de estos componentes y a las limitaciones de alcance del proyecto. Asimismo, el MQ-2 presenta un consumo energético y requerimientos de calentamiento que representan limitaciones para la autonomía y portabilidad del dispositivo.
+
+La tecnología Bluetooth se selecciona por su simplicidad de integración y por resultar adecuada para las pruebas de comunicación previstas en el prototipo. Sin embargo, su alcance limitado representa una restricción para una aplicación real en espacios confinados, especialmente cuando se requiere transmitir información hacia una estación de supervisión ubicada a mayor distancia. Como posible evolución del sistema, podría evaluarse la incorporación de tecnología LoRa, que permitiría establecer enlaces de comunicación de mayor alcance.
 
 Quedan fuera del alcance de este MVP:
 
-- La medición real de concentraciones de gases tóxicos.
-- La medición de concentración de oxígeno.
+- La detección de gases distintos de aquellos a los que responde el sensor MQ-2, incluyendo la medición de concentración de oxígeno.
+- La medición precisa y confiable de concentraciones de gases tóxicos.
 - La validación del dispositivo para su utilización en operaciones industriales reales.
 - La certificación del equipo para atmósferas explosivas.
 - La implementación de una estación de supervisión industrial o infraestructura de comunicaciones de largo alcance.
+- La implementación de un enlace de comunicación LoRa.
 
----
+### 1.7. Diagrama en bloques
+
+[Pendiente de incorporar el diagrama general del sistema, identificando el microcontrolador, los sensores, los periféricos de interacción, los actuadores y el módulo de comunicación Bluetooth.]
+
 
 ## 2. Elicitación de requisitos y casos de uso
 
-### 2.1. Actores involucrados
+En el mercado argentino existen diferentes soluciones comerciales orientadas al monitoreo de condiciones ambientales y a la protección de trabajadores en entornos industriales. Entre ellas se encuentran los detectores portátiles multigás, que permiten medir distintas variables atmosféricas y generar alertas ante condiciones potencialmente peligrosas. Algunos equipos incorporan también funciones de comunicación inalámbrica y detección de situaciones asociadas a la falta de movimiento del trabajador.
 
-Se identifican los siguientes actores principales:
+Como ejemplo puede mencionarse el **MicroRAE de Honeywell**, comercializado en Argentina por distribuidores especializados. Este dispositivo permite monitorear simultáneamente distintos gases, como oxígeno, gases combustibles, monóxido de carbono y sulfuro de hidrógeno. Además, incorpora una alarma configurable de hombre caído y opciones de conectividad inalámbrica para transmitir información y estados de alarma a sistemas externos.
 
-| Actor | Descripción |
-|---|---|
-| Operario | Usuario directo del dispositivo. Recibe información y alertas locales durante la simulación de una tarea en un espacio confinado. |
-| Supervisor de Seguridad e Higiene | Puede recibir información y notificaciones transmitidas por Bluetooth mediante una aplicación externa, mientras se encuentre dentro del alcance del enlace. |
-| Técnico o responsable de configuración | Interactúa con el menú SETUP para modificar los parámetros de funcionamiento del sistema. |
+Otra alternativa disponible es el **Hardkraft GM300**, un detector portátil que permite medir gases combustibles, monóxido de carbono, sulfuro de hidrógeno y oxígeno, con señalización visual y sonora ante condiciones de alerta.
 
-El personal de rescate se considera un actor indirectamente beneficiado por la disponibilidad de información sobre eventos detectados, aunque no interviene directamente en el funcionamiento del prototipo.
+Estas soluciones presentan funcionalidades similares a algunas de las contempladas en este proyecto y constituyen referencias del tipo de equipamiento utilizado en aplicaciones industriales. Sin embargo, el prototipo propuesto busca integrar y centralizar en un único dispositivo wearable distintos sensores y funcionalidades que habitualmente pueden encontrarse distribuidos en equipos o soluciones independientes. De esta manera, se plantea una solución que acompañe al trabajador durante la realización de sus tareas y permita combinar el monitoreo de variables ambientales, la detección de períodos prolongados de inmovilidad y la generación de alertas locales.
 
-### 2.2. Requisitos funcionales
+### 2.1. Requisitos funcionales
 
-Los requisitos funcionales describen las acciones que deberá realizar el sistema.
+A partir de las necesidades identificadas y de los actores involucrados, se establecen los requisitos funcionales que describen las capacidades que deberá proporcionar el prototipo. La **Tabla 2.1** reúne estos requisitos, identificados mediante códigos únicos para facilitar su referencia durante el desarrollo y la evaluación del sistema. Su definición permite establecer de manera concreta qué funciones se espera implementar y cuáles deberán contemplarse en los casos de uso.
 
 | ID | Requisito | Descripción |
 |---|---|---|
 | RF-01 | Monitoreo de temperatura | El sistema deberá adquirir periódicamente la temperatura del entorno mediante el sensor LM35 y actualizar el valor disponible para su procesamiento. |
-| RF-02 | Simulación de gases | El sistema deberá adquirir una señal analógica mediante un trimpot de 10 kΩ, utilizada para simular variaciones en una variable asociada a la presencia de gases. |
+| RF-02 | Detección de gases | El sistema deberá adquirir una señal analógica mediante el sensor MQ-2, utilizada para detectar determinados gases combustibles y humo. |
 | RF-03 | Detección de temperatura elevada | El sistema deberá comparar la temperatura adquirida con un umbral configurado y generar una condición de alerta cuando se supere dicho valor. |
-| RF-04 | Detección de señal de gas elevada | El sistema deberá comparar la señal analógica simulada con un umbral configurado y generar una condición de alerta cuando corresponda. |
+| RF-04 | Detección de señal de gas elevada | El sistema deberá comparar la señal analógica proveniente del MQ-2 con un umbral configurado y generar una condición de alerta cuando corresponda. |
 | RF-05 | Monitoreo inercial | El sistema deberá adquirir datos de aceleración y velocidad angular mediante el módulo MPU-6050. |
 | RF-06 | Detección de inmovilidad | El sistema deberá procesar los datos del MPU-6050 para identificar períodos prolongados de inmovilidad. Como parámetro inicial se establece un período de 30 segundos sin movimiento detectado para iniciar una secuencia de prealarma. La inmovilidad no constituirá por sí sola una confirmación de caída. |
 | RF-07 | Prealarma cancelable | Ante la detección de una condición persistente de inmovilidad, el sistema deberá iniciar una prealarma de 15 segundos que permita al operario cancelar el evento mediante un botón. Si no se recibe una cancelación durante ese intervalo, se generará una alerta de emergencia. |
-| RF-08 | Generación de alertas locales | El sistema deberá activar señales visuales y sonoras ante las condiciones de alarma definidas. |
+| RF-08 | Generación de alertas locales | El sistema deberá señalizar visualmente los estados de funcionamiento y las condiciones de alerta mediante LEDs, y generar señales sonoras mediante un buzzer ante las condiciones de alarma definidas. La señalización visual deberá permitir distinguir el funcionamiento normal, las situaciones de prealarma, las alarmas activas y las fallas detectadas. |
 | RF-09 | Comunicación Bluetooth | El sistema deberá transmitir información de estado y eventos relevantes mediante el módulo HM-10 hacia una aplicación externa, siempre que exista una conexión Bluetooth disponible. |
 | RF-10 | Visualización local | El sistema deberá mostrar información de funcionamiento, mediciones y estados de alerta mediante una pantalla LCD. |
-| RF-11 | Configuración | El sistema deberá permitir modificar los umbrales de temperatura y de señal analógica, así como los tiempos de detección de inmovilidad y de prealarma, mediante un menú interactivo accesible desde botones y joystick. |
-| RF-12 | Persistencia de configuración | El sistema deberá almacenar los parámetros configurados en memoria no volátil, de modo que se conserven ante un reinicio. |
-| RF-13 | Gestión de eventos simultáneos | El sistema deberá conservar y procesar los eventos de alerta detectados, evitando que una condición sobrescriba o descarte otra que también requiera atención. |
-| RF-14 | Detección de fallas | El sistema deberá identificar las fallas de adquisición o comunicación con los periféricos que puedan ser detectadas por el firmware y señalizar el estado de falla correspondiente. |
-| RF-15 | Selección de perfiles | El sistema deberá permitir seleccionar perfiles de funcionamiento predefinidos mediante los Dip Switches, utilizando la configuración correspondiente durante su operación. |
+| RF-11 | Selección de perfil de usuario | El sistema deberá permitir seleccionar uno de los perfiles de usuario disponibles mediante el menú de configuración y cargar los parámetros asociados al perfil seleccionado. |
+| RF-12 | Configuración | El sistema deberá permitir modificar los umbrales de temperatura y de señal analógica, así como los tiempos de detección de inmovilidad y de prealarma, correspondientes al perfil activo, mediante un menú interactivo accesible desde pulsadores y joystick. |
+| RF-13 | Persistencia de configuración | El sistema deberá almacenar en la memoria Flash interna los parámetros de funcionamiento de cada perfil de usuario y el perfil activo, de modo que se conserven ante un reinicio. |
+| RF-14 | Gestión de eventos simultáneos | El sistema deberá conservar y procesar los eventos de alerta detectados, evitando que una condición sobrescriba o descarte otra que también requiera atención. |
+| RF-15 | Detección de fallas | El sistema deberá identificar las fallas de adquisición o comunicación con los periféricos que puedan ser detectadas por el firmware y señalizar el estado de falla correspondiente. |
 
-### 2.3. Requisitos no funcionales
+*Tabla 2.1: Requisitos funcionales del sistema.*
 
-Los requisitos no funcionales establecen restricciones y características de calidad del sistema.
+### 2.2. Requisitos no funcionales
+
+Además de las funciones previstas, el prototipo deberá cumplir determinadas condiciones relacionadas con su arquitectura, funcionamiento e integración. La **Tabla 2.2** presenta los requisitos no funcionales, que establecen las restricciones técnicas y los criterios de implementación derivados de la consigna de la asignatura.
 
 | ID | Requisito | Descripción |
 |---|---|---|
@@ -136,324 +190,59 @@ Los requisitos no funcionales establecen restricciones y características de cal
 | RNF-09 | Integración de periféricos | Se deberán utilizar interfaces de comunicación SPI y/o I2C para la conexión y gestión de los periféricos correspondientes. |
 | RNF-10 | Montaje | Los componentes deberán integrarse sobre una placa base, sin utilizar protoboard ni cables Dupont. |
 
-### 2.4. Casos de uso
+*Tabla 2.2: Requisitos no funcionales del sistema.*
 
-A continuación se describen los principales escenarios de interacción entre los actores y el sistema.
+### 2.3. Casos de uso
+
+Una vez definidos los requisitos del sistema, se describen los principales escenarios de interacción mediante casos de uso. Se contemplan cuatro situaciones representativas: el monitoreo de las condiciones ambientales, la detección de inmovilidad prolongada, la selección de perfiles de usuario y configuración de parámetros y la recepción de notificaciones. Cada caso especifica los actores involucrados, las condiciones necesarias para su ejecución y los pasos que componen el escenario principal y sus posibles alternativas.
 
 #### CU-01: Monitorear condiciones ambientales
 
-**Actor principal:** Operario.
+| Elemento | Descripción |
+|---|---|
+| **Actor principal** | Operario. |
+| **Objetivo** | Detectar condiciones ambientales que superen los umbrales definidos para el funcionamiento del prototipo. |
+| **Precondiciones** | a) El dispositivo se encuentra encendido. b) El sistema completó su inicialización. c) Existe un perfil de usuario activo y sus parámetros de funcionamiento se encuentran cargados. d) Los sensores y periféricos necesarios se encuentran disponibles. |
+| **Flujo principal** | a) El sistema adquiere periódicamente la temperatura mediante el LM35. b) El sistema adquiere la señal analógica proveniente del MQ-2. c) Los valores obtenidos son procesados y comparados con los umbrales configurados en el perfil activo. d) Si las mediciones se encuentran dentro de los rangos establecidos y no existen otras condiciones de alerta o falla, el sistema continúa en modo NORMAL y mantiene encendido el LED verde. e) Si alguna medición supera su umbral, el sistema genera el evento de alerta correspondiente. f) El módulo de actuación activa el LED rojo y el buzzer para señalizar la condición de alarma. El LED verde se apaga mientras exista una alarma activa. g) El sistema actualiza la información mostrada en la pantalla LCD. h) El sistema transmite la notificación correspondiente mediante Bluetooth, si existe una conexión disponible. |
+| **Flujos alternativos** | a) Si la temperatura supera el umbral configurado, se genera una alerta por temperatura elevada. b) Si la señal analógica del MQ-2 supera el umbral configurado, se genera una alerta por superación del umbral de señal. c) Si ambas condiciones ocurren simultáneamente, el sistema deberá conservar y procesar ambos eventos. d) Si se detecta una falla de adquisición, el sistema deberá señalizar el error sin interpretar la medición inválida como una condición segura. |
+| **Postcondiciones** | a) El evento queda identificado por el sistema. b) Las alertas correspondientes permanecen activas mientras persista la condición definida. c) La información del evento queda disponible para su comunicación externa. |
 
-**Objetivo:** Detectar condiciones ambientales que superen los umbrales definidos para el funcionamiento del prototipo.
-
-**Precondiciones:**
-- El dispositivo se encuentra encendido.
-- El sistema completó su inicialización.
-- Los sensores y periféricos necesarios se encuentran disponibles.
-
-**Flujo principal:**
-1. El sistema adquiere periódicamente la temperatura mediante el LM35.
-2. El sistema adquiere la señal analógica proveniente del trimpot.
-3. Los valores obtenidos son procesados y comparados con los umbrales configurados.
-4. Si las mediciones se encuentran dentro de los rangos establecidos, el sistema continúa en modo NORMAL.
-5. Si alguna medición supera su umbral, el sistema genera el evento de alerta correspondiente.
-6. El módulo de actuación activa la señalización visual y sonora.
-7. El sistema actualiza la información mostrada en la pantalla LCD.
-8. El sistema transmite la notificación correspondiente mediante Bluetooth, si existe una conexión disponible.
-
-**Flujos alternativos:**
-- Si la temperatura supera el umbral configurado, se genera una alerta por temperatura elevada.
-- Si la señal analógica supera el umbral configurado, se genera una alerta por señal de gas elevada.
-- Si ambas condiciones ocurren simultáneamente, el sistema deberá conservar y procesar ambos eventos.
-- Si se detecta una falla de adquisición, el sistema deberá señalizar el error sin interpretar la medición inválida como una condición segura.
-
-**Postcondiciones:**
-- El evento queda identificado por el sistema.
-- Las alertas correspondientes permanecen activas mientras persista la condición definida.
-- La información del evento queda disponible para su comunicación externa.
+*Caso de uso CU-01 – Monitorear condiciones ambientales.*
 
 #### CU-02: Detectar inmovilidad prolongada
 
-**Actor principal:** Operario.
+| Elemento | Descripción |
+|---|---|
+| **Actor principal** | Operario. |
+| **Objetivo** | Identificar una posible situación de emergencia asociada a la falta prolongada de movimiento del trabajador. |
+| **Precondiciones** | a) El dispositivo se encuentra encendido y en modo NORMAL. b) Existe un perfil de usuario activo con sus parámetros de funcionamiento cargados. c) El módulo MPU-6050 se encuentra operativo. |
+| **Flujo principal** | a) El sistema adquiere periódicamente información de aceleración y velocidad angular. b) El firmware procesa las mediciones para identificar variaciones compatibles con movimiento. c) Cuando se detecta una condición persistente de inmovilidad, se inicia el temporizador correspondiente. d) Si la inmovilidad se mantiene durante el período configurado en el perfil activo, inicialmente establecido en 30 segundos, se genera un evento de prealarma. e) El sistema apaga el LED verde, activa el parpadeo del LED rojo y genera una señal sonora mediante el buzzer para advertir al operario. Se inicia un temporizador de prealarma de acuerdo con el valor configurado, inicialmente establecido en 15 segundos. f) Durante ese intervalo, el operario puede cancelar la prealarma mediante un botón. g) Si el operario cancela la prealarma, el sistema registra la cancelación y retoma el monitoreo. La señalización se actualiza de acuerdo con las demás condiciones que permanezcan activas. h) Si transcurre el tiempo de prealarma sin recibir una cancelación, el sistema genera una alerta de emergencia. El LED rojo permanece encendido y se activa la señal sonora correspondiente. i) El evento se comunica mediante Bluetooth al dispositivo externo, si existe una conexión disponible. |
+| **Flujos alternativos** | a) Si se detecta movimiento antes de alcanzar el tiempo establecido, el temporizador de inmovilidad se reinicia. b) Si el operario cancela la prealarma, no se genera la alerta de emergencia asociada a ese evento. c) La cancelación de la prealarma no deberá desactivar otras alarmas ambientales que permanezcan activas. d) Si el enlace Bluetooth no se encuentra disponible, el sistema mantiene la alerta local. |
+| **Postcondiciones** | a) El evento queda identificado como inmovilidad prolongada. b) Si no se cancela la prealarma, se genera una notificación de emergencia. c) El sistema continúa monitoreando las condiciones del dispositivo y mantiene las señalizaciones correspondientes a los eventos activos. |
 
-**Actor secundario:** Supervisor de Seguridad e Higiene.
+*Caso de uso CU-02 – Detectar inmovilidad prolongada.*
 
-**Objetivo:** Identificar una posible situación de emergencia asociada a la falta prolongada de movimiento del trabajador.
+#### CU-03: Gestionar perfiles y parámetros de configuración
 
-**Precondiciones:**
-- El dispositivo se encuentra encendido y en modo NORMAL.
-- El módulo MPU-6050 se encuentra operativo.
+| Elemento | Descripción |
+|---|---|
+| **Actor principal** | Técnico o responsable de configuración. |
+| **Objetivo** | Seleccionar un perfil de usuario y consultar o modificar los parámetros de funcionamiento asociados a dicho perfil. |
+| **Precondiciones** | a) El dispositivo se encuentra encendido. b) El dispositivo dispone de cuatro perfiles de usuario, inicializados con parámetros predeterminados o previamente configurados. c) El sistema permite acceder al modo SETUP. |
+| **Flujo principal** | a) El usuario ingresa al modo SETUP mediante los controles definidos. b) El sistema presenta el menú de configuración en la pantalla LCD. c) El usuario selecciona la opción de gestión de perfiles mediante el joystick. d) El sistema muestra los cuatro perfiles disponibles (Usuario 1, Usuario 2, Usuario 3 y Usuario 4), indicando cuál se encuentra activo. e) El usuario selecciona y confirma el perfil que desea utilizar. f) El sistema recupera los parámetros asociados al perfil seleccionado y lo establece como perfil activo. g) El sistema permite consultar los parámetros correspondientes al perfil activo. h) El usuario selecciona el parámetro que desea modificar y ajusta su valor mediante los controles disponibles. i) El usuario confirma la modificación. j) El sistema verifica que el valor ingresado se encuentre dentro del rango permitido. k) El nuevo parámetro se almacena en la memoria Flash interna, asociado al perfil activo. l) El sistema informa que la configuración fue guardada. m) El usuario sale del modo SETUP y retorna al modo NORMAL. |
+| **Flujos alternativos** | a) Si el usuario cancela la selección de perfil, el sistema conserva el perfil que se encontraba activo. b) Si un perfil no posee una configuración previamente almacenada, el sistema utiliza los valores predeterminados definidos para ese perfil. c) Si el valor ingresado no es válido, el sistema informa el error y solicita una nueva configuración. d) Si el usuario cancela la modificación de un parámetro, se conserva el valor previamente almacenado. e) Si ocurre un error durante el almacenamiento, el sistema informa la falla y no confirma la actualización de la configuración. f) Si ocurre un error al recuperar los parámetros de un perfil, el sistema evita aplicar una configuración inválida. |
+| **Postcondiciones** | a) El perfil seleccionado queda establecido como perfil activo. b) Los parámetros confirmados quedan actualizados y almacenados en la memoria Flash interna, asociados al perfil correspondiente. c) La configuración del perfil activo se utiliza durante el funcionamiento del dispositivo. d) Los parámetros de los demás perfiles permanecen sin modificaciones. |
 
-**Flujo principal:**
-1. El sistema adquiere periódicamente información de aceleración y velocidad angular.
-2. El firmware procesa las mediciones para identificar variaciones compatibles con movimiento.
-3. Cuando se detecta una condición persistente de inmovilidad, se inicia el temporizador correspondiente.
-4. Si la inmovilidad se mantiene durante el período configurado, inicialmente establecido en 30 segundos, se genera un evento de prealarma.
-5. El sistema activa una señalización local que advierte al operario e inicia un temporizador de prealarma de 15 segundos.
-6. Durante ese intervalo, el operario puede cancelar el evento mediante un botón.
-7. Si el operario cancela la prealarma, el sistema registra la cancelación y retorna al monitoreo normal.
-8. Si transcurren los 15 segundos sin recibir una cancelación, el sistema genera una alerta de emergencia.
-9. El evento se comunica mediante Bluetooth al dispositivo externo, si existe una conexión disponible.
-
-**Flujos alternativos:**
-- Si se detecta movimiento antes de alcanzar el tiempo establecido, el temporizador de inmovilidad se reinicia.
-- Si el operario cancela la prealarma, no se genera la alerta remota de emergencia asociada a ese evento.
-- Si el enlace Bluetooth no se encuentra disponible, el sistema mantiene la alerta local y gestiona los intentos de transmisión de acuerdo con la política de reintentos definida.
-
-**Postcondiciones:**
-- El evento queda identificado como inmovilidad prolongada.
-- Si no se cancela la prealarma, se genera una notificación de emergencia.
-- El sistema continúa funcionando o permanece en el estado de alarma correspondiente.
-
-#### CU-03: Configurar parámetros del dispositivo
-
-**Actor principal:** Técnico o responsable de configuración.
-
-**Objetivo:** Modificar los parámetros de funcionamiento del dispositivo.
-
-**Precondiciones:**
-- El dispositivo se encuentra encendido.
-- El sistema permite acceder al modo SETUP.
-
-**Flujo principal:**
-1. El usuario ingresa al modo SETUP mediante la combinación de controles definida.
-2. El sistema presenta el menú de configuración en la pantalla LCD.
-3. El usuario navega por las opciones mediante el joystick.
-4. El usuario selecciona el parámetro que desea modificar.
-5. El sistema permite ajustar el valor mediante los controles disponibles.
-6. El usuario confirma la modificación.
-7. El sistema verifica que el valor ingresado se encuentre dentro del rango permitido.
-8. El nuevo parámetro se almacena en memoria no volátil.
-9. El sistema informa que la configuración fue guardada.
-10. El usuario sale del modo SETUP y retorna al modo NORMAL.
-
-**Flujos alternativos:**
-- Si el valor ingresado no es válido, el sistema informa el error y solicita una nueva configuración.
-- Si el usuario cancela la operación, se conserva el valor previamente almacenado.
-- Si ocurre un error durante el almacenamiento, el sistema informa la falla y conserva, cuando sea posible, la última configuración válida.
-
-**Postcondiciones:**
-- Los parámetros quedan actualizados y almacenados.
-- La nueva configuración se utiliza durante el funcionamiento normal del dispositivo.
-
+*Caso de uso CU-03 – Gestionar perfiles y parámetros de configuración.*
 #### CU-04: Recibir notificaciones del dispositivo
 
-**Actor principal:** Supervisor de Seguridad e Higiene.
-
-**Objetivo:** Recibir información y eventos detectados por el dispositivo wearable.
-
-**Precondiciones:**
-- El módulo HM-10 se encuentra operativo.
-- Existe una aplicación externa conectada al dispositivo mediante Bluetooth.
-- El dispositivo receptor se encuentra dentro del alcance del enlace.
-
-**Flujo principal:**
-1. La aplicación establece una conexión Bluetooth con el módulo HM-10.
-2. El sistema wearable transmite información de estado y mediciones.
-3. La aplicación recibe y presenta la información.
-4. Ante una condición de alerta, el dispositivo transmite una notificación asociada al evento.
-5. La aplicación identifica el tipo de evento recibido y lo presenta al supervisor.
-
-**Flujos alternativos:**
-- Si la conexión se interrumpe, el sistema continúa generando las alertas locales.
-- Cuando la conexión vuelve a estar disponible, el sistema podrá reanudar la comunicación.
-- Los intentos de transmisión deberán ser controlados para evitar bloqueos o retransmisiones indefinidas.
-
-**Postcondiciones:**
-- El supervisor dispone de la información transmitida por el dispositivo mientras el enlace se encuentra operativo.
-  
-#### CU-05: Seleccionar perfil de funcionamiento
-
-**Actor principal:** Técnico o responsable de configuración.
-
-**Objetivo:** Seleccionar un perfil predefinido para establecer parámetros de funcionamiento del dispositivo.
-
-**Precondiciones:**
-- El dispositivo se encuentra apagado o en una condición que permita actualizar el perfil de funcionamiento.
-- Los Dip Switches se encuentran disponibles.
-
-**Flujo principal:**
-1. El usuario selecciona una combinación de Dip Switches correspondiente al perfil deseado.
-2. El sistema lee el estado de los Dip Switches durante la inicialización.
-3. El sistema identifica el perfil seleccionado.
-4. El sistema carga los parámetros asociados al perfil.
-5. El dispositivo inicia su funcionamiento utilizando la configuración seleccionada.
-
-**Flujos alternativos:**
-- Si la combinación seleccionada no corresponde a un perfil definido, el sistema utiliza un perfil predeterminado.
-- Si ocurre un error durante la lectura de las entradas, el sistema señaliza la condición de falla correspondiente.
-
-**Postcondiciones:**
-- El sistema inicia su funcionamiento utilizando los parámetros del perfil seleccionado.
-- 
----
-
-## 3. Hardware
-
-### 3.1. Hardware obligatorio
-
-El desarrollo contempla los componentes obligatorios establecidos por la cátedra.
-
-| Componente | Función dentro del sistema |
+| Elemento | Descripción |
 |---|---|
-| NUCLEO-F103RB | Plataforma de desarrollo basada en el microcontrolador STM32F103RB. Ejecutará el firmware Bare Metal y gestionará los periféricos. |
-| Dip Switches | Permitirán seleccionar perfiles de funcionamiento predefinidos mediante distintas combinaciones de sus posiciones. |
-| Botones | Se utilizarán para confirmar acciones, cancelar prealarmas y navegar por las funciones del dispositivo. |
-| LEDs | Proporcionarán señalización visual de los estados de funcionamiento y condiciones de alerta. |
-| Buzzer | Generará alertas sonoras ante las condiciones de alarma definidas. |
-| Módulo HM-10 | Permitirá la comunicación Bluetooth Low Energy con una aplicación externa para transmitir información y notificaciones. |
-| Memoria no volátil | Permitirá almacenar los parámetros de configuración para conservarlos entre reinicios. Se propone utilizar una EEPROM externa. |
-| Sensores analógicos | Se utilizarán para adquirir señales de temperatura y para simular una variable asociada a la presencia de gases. |
+| **Actor principal** | Supervisor de Seguridad e Higiene. |
+| **Objetivo** | Recibir información y eventos detectados por el dispositivo wearable. |
+| **Precondiciones** | a) El módulo HM-10 se encuentra operativo. b) Existe una aplicación o herramienta externa de recepción conectada al dispositivo mediante Bluetooth. c) El dispositivo receptor se encuentra dentro del alcance del enlace. |
+| **Flujo principal** | a) La aplicación o herramienta externa establece una conexión Bluetooth con el módulo HM-10. b) El sistema wearable transmite información de estado y mediciones. c) La aplicación o herramienta externa recibe y presenta la información. d) Ante una condición de alerta, el dispositivo transmite una notificación asociada al evento. e) La aplicación o herramienta externa identifica el tipo de evento recibido y lo presenta al supervisor. |
+| **Flujos alternativos** | a) Si la conexión se interrumpe, el sistema continúa generando las alertas locales. b) Si el enlace vuelve a estar disponible y se restablece la comunicación, el sistema podrá reanudar la transmisión de información. |
+| **Postcondiciones** | a) El supervisor dispone de la información transmitida por el dispositivo mientras el enlace se encuentra operativo. |
 
-Para la interconexión de los componentes se utilizará una placa base con los módulos y conectores soldados. No se utilizarán protoboards ni cables Dupont.
-
-### 3.2. Hardware adicional
-
-Se proponen los siguientes componentes adicionales, sujetos a la aprobación de los docentes responsables:
-
-| Componente | Función dentro del sistema | Interfaz |
-|---|---|---|
-| Sensor LM35 | Medición analógica de la temperatura del entorno. | ADC |
-| Trimpot de 10 kΩ | Generación de una señal analógica variable para simular cambios en una variable asociada a la presencia de gases. | ADC |
-| MPU-6050 | Adquisición de aceleración y velocidad angular para identificar movimiento e inmovilidad prolongada. | I2C |
-| Joystick analógico | Navegación por las opciones del menú SETUP. | ADC |
-| LCD 16x2 con interfaz I2C | Visualización de mediciones, estados y opciones de configuración. | I2C |
-
-El sensor LM35 permitirá trabajar con una variable ambiental real, mientras que el trimpot permitirá simular diferentes niveles de una señal analógica para verificar la lógica de detección y generación de alarmas. Esta última implementación no constituye una medición real de concentración de gases.
-
-El MPU-6050 incorpora un acelerómetro y un giroscopio de tres ejes. La información obtenida permitirá analizar patrones de movimiento y períodos prolongados de inmovilidad.
-
-La pantalla LCD facilitará la interacción con el usuario, permitiendo visualizar los valores adquiridos, el estado del sistema y las opciones disponibles durante la configuración.
-
-### 3.3. Interconexión del hardware
-
-La placa NUCLEO-F103RB actuará como unidad central del sistema.
-
-Se propone la siguiente distribución de interfaces:
-
-- **ADC:** LM35, trimpot y joystick.
-- **I2C:** MPU-6050, LCD y EEPROM externa.
-- **UART:** módulo Bluetooth HM-10.
-- **GPIO:** botones, Dip Switches, LEDs y buzzer.
-
-Los periféricos que compartan una misma interfaz deberán administrarse mediante una lógica que evite conflictos de acceso. En particular, se deberá verificar la compatibilidad de las direcciones I2C de los dispositivos conectados al bus.
-
-Las operaciones de adquisición y comunicación deberán implementarse sin bloquear la ejecución principal del firmware.
-
----
-
-## 4. Programación
-
-### 4.1. Programación obligatoria
-
-El firmware se desarrollará en lenguaje C, utilizando una arquitectura Bare Metal, sin sistema operativo.
-
-Se implementará un sistema orientado a eventos (*Event-Triggered System*), organizado de manera modular bajo el esquema:
-
-- **Escrutar:** adquisición de información proveniente de sensores, entradas y periféricos.
-- **Procesar:** evaluación de mediciones, condiciones de funcionamiento y eventos.
-- **Actuar:** actualización de salidas, generación de alertas, visualización y transmisión de información.
-
-La arquitectura deberá contemplar los siguientes elementos:
-
-**Ejecutor cíclico y Super-Loop**
-
-Se implementará un ejecutor cíclico basado en una estructura Super-Loop, cuya vuelta principal deberá tener una duración inferior a 1 ms.
-
-La ejecución de las tareas no deberá depender de esperas activas ni de retardos bloqueantes. Las operaciones que requieran tiempos de espera deberán gestionarse mediante temporizadores y estados internos.
-
-**Base de tiempo**
-
-Se utilizará el SysTick del microcontrolador para generar una interrupción periódica cada 1 ms.
-
-A partir de esta interrupción se actualizarán las referencias temporales utilizadas por las distintas tareas y se invocarán los mecanismos de temporización correspondientes mediante callbacks.
-
-Las rutinas ejecutadas durante la interrupción deberán mantenerse acotadas, evitando realizar dentro de ellas operaciones extensas de adquisición, procesamiento o comunicación. Las tareas correspondientes serán gestionadas desde el ejecutor principal.
-
-**Gestión no bloqueante de periféricos**
-
-Los periféricos deberán gestionarse mediante polling no bloqueante, interrupciones o DMA, según corresponda.
-
-En particular, se deberá evitar que las operaciones de comunicación I2C, UART y actualización de pantalla bloqueen el Super-Loop.
-
-**Máquinas de estado**
-
-Se propone organizar el funcionamiento del firmware mediante tres máquinas de estado principales:
-
-1. **Máquina de estados de sensores:** administrará la adquisición de mediciones, el procesamiento inicial de los datos y la identificación de errores de comunicación o adquisición.
-2. **Máquina de estados del sistema:** gestionará los modos de operación, la evaluación de condiciones y la generación de eventos.
-3. **Máquina de estados de actuadores:** administrará las señales visuales y sonoras, la pantalla y las notificaciones transmitidas.
-
-Las máquinas de estado intercambiarán información mediante estructuras de datos y eventos definidos explícitamente. De esta manera, se busca mantener la independencia entre los módulos y evitar dependencias directas innecesarias.
-
-**Modos de operación**
-
-Se contemplan los siguientes modos principales:
-
-- **NORMAL:** adquisición y procesamiento continuo de información, evaluación de condiciones y actualización de las salidas.
-- **SETUP:** navegación por el menú y modificación de parámetros de configuración.
-- **ALARM:** gestión de las condiciones de alerta y activación de los mecanismos de señalización.
-- **FAULT:** identificación y señalización de errores que comprometan el funcionamiento de alguno de los periféricos.
-
-**Menú interactivo**
-
-El menú permitirá modificar los parámetros necesarios para el funcionamiento del dispositivo, incluyendo los umbrales de temperatura y de señal analógica, el tiempo de detección de inmovilidad y la duración de la prealarma.
-
-La selección inicial de perfiles de funcionamiento se realizará mediante los Dip Switches, cuyos estados serán leídos durante la inicialización del sistema.
-
-**Bajo consumo**
-
-Se contemplarán estrategias de bajo consumo mediante la reducción de actividad del microcontrolador cuando no existan tareas pendientes, siempre que ello sea compatible con los requerimientos de temporización y adquisición del sistema.
-
-### 4.2. Programación adicional
-
-Se propone incorporar las siguientes funcionalidades adicionales, sujetas a la aprobación de los docentes responsables:
-
-**Rutina de debouncing mediante temporizadores decrecientes**
-
-Se implementará un mecanismo de eliminación de rebotes para las entradas provenientes de los botones.
-
-La rutina utilizará temporizadores decrecientes para validar los cambios de estado de las entradas, evitando que las oscilaciones eléctricas propias de los contactos mecánicos generen múltiples eventos ante una única pulsación.
-
-**Detección de inmovilidad mediante MPU-6050**
-
-Se desarrollará una rutina de procesamiento de datos inerciales para identificar períodos prolongados de inmovilidad.
-
-El algoritmo utilizará información del acelerómetro y del giroscopio para distinguir períodos de movimiento de condiciones persistentes de inmovilidad. El tiempo inicial de detección de inmovilidad se establece en 30 segundos, mientras que la duración inicial de la prealarma se establece en 15 segundos. Ambos parámetros podrán modificarse desde el menú SETUP.
-
-Estos valores constituyen parámetros preliminares de diseño y no umbrales normativos. La inmovilidad no será considerada por sí sola una confirmación de caída.
-
-**Gestión de eventos y prioridades**
-
-Se implementará un mecanismo de gestión de eventos que permita conservar las distintas condiciones de alerta detectadas.
-
-En caso de producirse eventos simultáneos, el sistema deberá evitar que uno sobrescriba al otro. Asimismo, se establecerá una prioridad para las notificaciones de emergencia respecto de la transmisión periódica de información.
-
----
-
-## 5. Estrategia de verificación inicial
-
-La validación del prototipo se realizará mediante pruebas funcionales en un entorno controlado.
-
-Se proponen las siguientes verificaciones:
-
-| ID | Verificación | Criterio de aceptación |
-|---|---|---|
-| V-01 | Adquisición de temperatura | Obtener lecturas del LM35 y actualizar el valor disponible para procesamiento. |
-| V-02 | Simulación de señal de gases | Variar el trimpot y comprobar que el sistema reconoce los cambios de la señal analógica. |
-| V-03 | Alarma ambiental | Superar los umbrales configurados y verificar la activación de las señales visuales y sonoras correspondientes. |
-| V-04 | Adquisición inercial | Obtener y procesar datos de aceleración y velocidad angular del MPU-6050. |
-| V-05 | Detección de inmovilidad | Mantener el dispositivo sin movimiento durante el período configurado y verificar el inicio de la prealarma. |
-| V-06 | Cancelación de prealarma | Accionar el botón correspondiente durante la prealarma y verificar que se cancela el evento. |
-| V-07 | Alerta de emergencia | No cancelar la prealarma y verificar la activación de la alerta local y el intento de notificación Bluetooth. |
-| V-08 | Comunicación Bluetooth | Verificar el establecimiento de la conexión y la recepción de mensajes en una aplicación externa. |
-| V-09 | Configuración | Modificar parámetros mediante el menú y comprobar que los cambios se almacenan correctamente. |
-| V-10 | Persistencia | Reiniciar el dispositivo y comprobar que se recuperan los últimos parámetros almacenados. |
-| V-11 | Gestión de fallas | Interrumpir o simular la pérdida de comunicación con un periférico y verificar la señalización del estado de error. |
-| V-12 | Ejecución del firmware | Verificar la ejecución no bloqueante de las tareas y el cumplimiento de los requisitos temporales establecidos por la cátedra. |
-| V-13 | Gestión de eventos simultáneos | Generar dos condiciones de alerta simultáneas y verificar que ambas sean conservadas y procesadas por el sistema. |
-| V-14 | Reinicio del temporizador de inmovilidad | Generar movimiento antes de alcanzar el tiempo configurado y verificar que el temporizador de inmovilidad se reinicia. |
-| V-15 | Visualización local | Verificar que la pantalla LCD presenta correctamente las mediciones, los estados de funcionamiento y las condiciones de alerta. |
-| V-16 | Comunicación interrumpida | Interrumpir el enlace Bluetooth durante una condición de alerta y comprobar que las alertas locales continúan funcionando sin bloquear el firmware. |
-
-Las pruebas permitirán verificar el funcionamiento de los principales módulos y la integración entre hardware y firmware. Los resultados se utilizarán para identificar posibles errores y realizar los ajustes necesarios durante el desarrollo del prototipo.
+*Caso de uso CU-04 – Recibir notificaciones del dispositivo.*
