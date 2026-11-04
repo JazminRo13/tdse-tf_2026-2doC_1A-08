@@ -136,8 +136,15 @@ Quedan fuera del alcance de este MVP:
 
 ### 1.7. Diagrama en bloques
 
-[Pendiente de incorporar el diagrama general del sistema, identificando el microcontrolador, los sensores, los periféricos de interacción, los actuadores y el módulo de comunicación Bluetooth.]
+La **Figura 1** presenta el diagrama en bloques propuesto para el sistema, en el que se identifican los principales componentes del prototipo y sus interconexiones.
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/JazminRo13/tdse-tf_2026-2doC_1A-08/JazminRo13-patch-3/Diagrama.png" alt="Diagrama en bloques del sistema" width="70%">
+</p>
+
+<p align="center">
+  <strong>Figura 1.</strong> Diagrama en bloques propuesto para el sistema.
+</p>
 
 ## 2. Elicitación de requisitos y casos de uso
 
