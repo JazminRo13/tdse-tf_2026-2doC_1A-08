@@ -13,7 +13,7 @@
 | 97182 | Romero, Jazmin | |
 | 104364 | Santellan, Marino | |
 
-A continuación se detalla el informe de avance del Trabajo Final a partir de los requisitos definidos en [propuesta.md](propuesta.md).
+A continuación se detalla el informe de avance del Trabajo Final a partir de los requisitos definidos en [propuesta.md](Propuesta.md).
 
 | Estado | Descripción |
 | :----: | :---------- |
