@@ -1,3 +1,5 @@
+<img src="https://www.fi.uba.ar/images/logo-fiuba.png" alt="Logo FIUBA" width="50%">
+
 # **Nodo Wearable para Espacios Confinados**
 ## **Informe de Avance**
 
